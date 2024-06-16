@@ -1,53 +1,43 @@
-import React, {useState} from 'react'
+import React, {createRef, useState} from 'react'
 import {CCol, CContainer, CRow} from "@coreui/react";
-import {tipusEditor} from "../components/smapSDK/editor/ConfiguradorEditor.jsx";
-import SmapEditor from "../components/smapSDK/editor/SmapEditor";
 import {string2HTML} from "../helpers/Utils";
 import {Store} from "../stores";
+import {Editor, tipusEditor} from "../components/smapSDK/editor";
 
 const DemoEditorRichText = () => {
+
+  const domEditor = createRef();
+
+  const[contingutEditorPREVIEW, setContingutEditorPREVIEW] = useState();
+  // const updateDataEditorPREVIEW = content => {
+  //   console.log("DemoEditorRichText > updateDataEditorPREVIEW", content);
+  //   setContingutEditorLITE(content);
+  //   Store.saveStorage("content", content);
+  // }
+  const configuracioPREVIEW = {
+    type: tipusEditor.PREVIEW,
+    title: false,
+    disabled: true,
+    content: contingutEditorPREVIEW,
+    callback: () => {
+      console.log("Preview working?", contingutEditorPREVIEW);
+    },
+  }
 
   const[contingutEditorLITE, setContingutEditorLITE] = useState();
   const updateDataEditorLITE = content => {
     console.log("DemoEditorRichText > updateDataEditorLITE", content);
     setContingutEditorLITE(content);
-    Store.saveStorage("content", content);
+    setContingutEditorPREVIEW(content);
+    // Store.saveStorage("content", content);
   }
   // Instància i renderitzat d'un editor amb la configuració LITE
   const configuracioEditorLITE = {
-    type: tipusEditor.MEDIUM,
+    type: tipusEditor.LITE,
     title: false,
     content: "<p>SmapEditor LITE amb plugin títol desactivat</p>",
     callback: updateDataEditorLITE,
   }
-
-
-  // const[contingutEditorMEDIUM, setContingutEditorMEDIUM] = useState();
-  // const updateDataEditorMEDIUM = editor => {
-  //   let content = editor.getData();
-  //   console.log("DemoEditorRichText > updateDataEditorMEDIUM", content);
-  //   setContingutEditorMEDIUM(content);
-  // }
-  // // Instància i renderitzat d'un editor amb la configuració MEDIUM
-  // const configuracioEditorMEDIUM = {
-  //   editor: getConfig(getConfig(tipusEditor.MEDIUM, true)),
-  //   content: "SmapEditor MEDIUM amb plugin títol activat",
-  //   callback: updateDataEditorMEDIUM,
-  // }
-  //
-  // const[contingutEditorFULL, setContingutEditorFULL] = useState();
-  // const updateDataEditorFULL = editor => {
-  //   let content = editor.getData();
-  //   console.log("DemoEditorRichText > updateDataEditorFULL", content);
-  //   setContingutEditorFULL(content);
-  // }
-  // // Instància i renderitzat d'un editor amb la configuració FULL
-  // const configuracioEditorFULL = {
-  //   editor: getConfig(getConfig(tipusEditor.FULL, false)),
-  //   content: "SmapEditor FULL amb plugin títol desactivat",
-  //   callback: updateDataEditorFULL,
-  // }
-
 
   return (
     <main>
@@ -60,12 +50,12 @@ const DemoEditorRichText = () => {
                 <h3>Demo editor mini</h3>
                 <CRow>
                   <CCol className={"col-6"}>
-                    <SmapEditor config={configuracioEditorLITE} />
+                    <Editor config={configuracioEditorLITE} />
                   </CCol>
                   <CCol className={"col-6"}>
                       <h4>Vista prèvia</h4>
                       <div className={"preview-content"}>
-                        {string2HTML(contingutEditorLITE)}
+                        <Editor config={configuracioPREVIEW} />
                       </div>
                   </CCol>
                 </CRow>

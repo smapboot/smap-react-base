@@ -204,12 +204,23 @@ export const getConfig = (tipus, withTitle) => {
         }
       }
       break;
+    case tipusEditor.PREVIEW:
+      configuration = {toolbar: {
+          items: [],
+          shouldNotGroupWhenFull: true
+        }
+      };
+      configuration.removePlugins = 'toolbar';
+      configuration.disabled = true;
+      break;
     default:
       configuration = {}
       break;
   }
 
   configuration.removePlugins = ['MediaEmbed'];
+
+
 
   if ( !showTitle  ) {
     configuration = {...configuration};
@@ -225,4 +236,5 @@ export const tipusEditor = {
   MEDIUM: 3,
   NONE: 4,
   AUTHOR: 5,
+  PREVIEW: 6,
 }

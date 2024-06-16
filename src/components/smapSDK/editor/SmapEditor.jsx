@@ -9,6 +9,7 @@ const SmapEditor = ({config}) => {
 
   const updateEditor = editor => {
     let content = editor.getData();
+    let html = editor
     console.log("SmapEditor > updateEditor", content);
     setContent(content);
     config.callback(content);
@@ -18,13 +19,13 @@ const SmapEditor = ({config}) => {
     <>
       <CKEditor
         editor={Editor}
-        data={config.content || content}
-        config={getConfig(config.type || tipusEditor.LITE, config.title || false)}
+        data={config?.content || content}
+        config={getConfig(config?.type || tipusEditor.LITE, config?.title || false)}
         onChange={(event, editor) => {
           updateEditor(editor);
         }}
         disableWatchdog={false}
-        disabled={false}
+        disabled={config.disabled || false}
         id={null}
         onBlur={() => {}}
         onError={() => {}}
