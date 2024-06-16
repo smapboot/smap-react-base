@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {getConfig, tipusEditor} from "./ConfiguradorEditor";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom/build/ckeditor";
-import _ from "lodash";
 
 const SmapEditor = ({config}) => {
 

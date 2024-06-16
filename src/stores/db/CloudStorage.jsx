@@ -1,6 +1,4 @@
-import React from "react"
 import { getStorage, ref, uploadBytes, updateMetadata, getDownloadURL, deleteObject } from "firebase/storage";
-
 const storage = getStorage();
 
 export const uploadFileToCloudStorage = async (file, metadades) => {

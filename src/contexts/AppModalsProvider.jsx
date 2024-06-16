@@ -84,13 +84,13 @@ const AppModalsProvider = (props) => {
         visible={fullscreenVisible}
         onClose={() => setFullscreenVisible( false)}
       >
-        <CModalHeader className={info.colors.header || ModalInformacioConfiguracio.colors.header}>
+        <CModalHeader className={infoFull.colors.header || ModalInformacioConfiguracio.colors.header}>
           <CModalTitle>
-            {string2HTML(info.texts.header || ModalInformacioConfiguracio.texts.header)}
+            {string2HTML(infoFull.texts.header || ModalInformacioConfiguracio.texts.header)}
           </CModalTitle>
         </CModalHeader>
         <CModalBody className={info.colors.body || ModalInformacioConfiguracio.colors.body}>
-          {string2HTML(info.texts.content || ModalInformacioConfiguracio.texts.content)}
+          {string2HTML(infoFull.texts.content || ModalInformacioConfiguracio.texts.content)}
         </CModalBody>
       </CModal>
     </>
