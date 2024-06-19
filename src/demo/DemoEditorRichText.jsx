@@ -6,17 +6,35 @@ import {Editor, tipusEditor} from "../components/smapSDK/editor";
 
 const DemoEditorRichText = () => {
 
+  const domEditor = createRef();
+
+  const[contingutEditorPREVIEW, setContingutEditorPREVIEW] = useState();
+  // const updateDataEditorPREVIEW = content => {
+  //   console.log("DemoEditorRichText > updateDataEditorPREVIEW", content);
+  //   setContingutEditorLITE(content);
+  //   Store.saveStorage("content", content);
+  // }
+  const configuracioPREVIEW = {
+    type: tipusEditor.PREVIEW,
+    title: false,
+    disabled: true,
+    content: contingutEditorPREVIEW,
+    callback: () => {
+      console.log("Preview working?", contingutEditorPREVIEW);
+    },
+  }
+
   const[contingutEditorLITE, setContingutEditorLITE] = useState();
   const updateDataEditorLITE = content => {
     console.log("DemoEditorRichText > updateDataEditorLITE", content);
     setContingutEditorLITE(content);
+    setContingutEditorPREVIEW(content);
     // Store.saveStorage("content", content);
   }
   // Instància i renderitzat d'un editor amb la configuració LITE
   const configuracioEditorLITE = {
     type: tipusEditor.LITE,
     title: false,
-    id: "editorDeProva",
     content: "<p>SmapEditor LITE amb plugin títol desactivat</p>",
     callback: updateDataEditorLITE,
   }
@@ -37,7 +55,7 @@ const DemoEditorRichText = () => {
                   <CCol className={"col-6"}>
                       <h4>Vista prèvia</h4>
                       <div className={"preview-content"}>
-                        {string2HTML(contingutEditorLITE)}
+                        <Editor config={configuracioPREVIEW} />
                       </div>
                   </CCol>
                 </CRow>
