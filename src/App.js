@@ -1,15 +1,15 @@
-import SmapDemo from "./demo/SmapDemo";
 import {
   AppModalsProvider,
   AppToastProvider,
 } from "./contexts";
+import Home from "./webapp/Home";
 
 function App() {
   return (
     <>
       <AppToastProvider>
         <AppModalsProvider>
-          <SmapDemo />
+          <Home />
         </AppModalsProvider>
       </AppToastProvider>
     </>

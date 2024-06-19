@@ -1,0 +1,29 @@
+body{
+    background-color: #f6f5f5;
+    color:#111111;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+.appHeader{
+    background-color: #024c98;
+    border-bottom: 2px solid #012c57;
+    padding: 2px;
+}
+.appContent{
+    height: calc(100vh - 100px);
+}
+.appFooter{
+    background-color: #024c98;
+    border-top: 2px solid #012c57;
+    padding: 2px;
+}
+.appHeader, .appFooter{
+    height: 50px;
+    max-height: 50px;
+    color: #f6f5f5;
+}
+.appFooter .content{
+    width: 100%;
+    text-align: center;
+}
