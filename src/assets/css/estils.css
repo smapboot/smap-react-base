@@ -1,0 +1,10 @@
+.float-left{
+    float: left !important;
+}
+.float-right{
+    float: right !important;
+}
+.ck-powered-by,
+.smapEditorReadonly .ck-editor__top {
+    display: none !important;
+}
